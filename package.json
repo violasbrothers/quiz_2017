@@ -18,5 +18,18 @@
     "express-partials": "^0.3.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.2"
-  }
+  },
+  "description": "Proyecto CORE 2017",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/violasbrothers/quiz_2017.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/violasbrothers/quiz_2017/issues"
+  },
+  "homepage": "https://github.com/violasbrothers/quiz_2017#readme",
+  "devDependencies": {}
 }
