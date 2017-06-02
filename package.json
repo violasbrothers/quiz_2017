@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "migrate_local": "./node_modules/.bin/sequelize db:migrate --url sqlite://$(pwd)/quiz.sqlite",
-    "seed_local": "./node_modules/.bin/sequelize db:seed:all --url sqlite://$(pwd)/quiz.sqlite",
+    "migrate_local": "sequelize db:migrate --url sqlite://$(pwd)/quiz.sqlite",
+    "seed_local": "sequelize db:seed:all --url sqlite://$(pwd)/quiz.sqlite",
     "migrate_heroku": "heroku run ./node_modules/.bin/sequelize db:migrate --url \\$DATABASE_URL",
     "seed_heroku": "heroku run ./node_modules/.bin/sequelize db:seed:all --url \\$DATABASE_URL"
   },
@@ -32,5 +32,17 @@
   },
   "devDependencies": {
     "sqlite3": "^3.1.8"
-  }
+  },
+  "description": "Proyecto CORE 2017",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/violasbrothers/quiz_2017.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/violasbrothers/quiz_2017/issues"
+  },
+  "homepage": "https://github.com/violasbrothers/quiz_2017#readme"
 }
