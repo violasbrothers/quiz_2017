@@ -2,13 +2,14 @@ var models = require("../models");
 var Sequelize = require('sequelize');
 
 var paginate = require('../helpers/paginate').paginate;
+var max = 0;
 
 // Autoload el quiz asociado a :quizId
 exports.load = function (req, res, next, quizId) {
 
     models.Quiz.findById(quizId, {
         include: [
-            models.Tip,
+            {model: models.Tip, include: [{model: models.User, as: 'Author'}]},
             {model: models.User, as: 'Author'}
         ]
     })
@@ -187,6 +188,7 @@ exports.destroy = function (req, res, next) {
 
     req.quiz.destroy()
     .then(function () {
+	max = 0;
         req.flash('success', 'Quiz borrado con éxito.');
         res.redirect('/goback');
     })
@@ -243,9 +245,11 @@ exports.randomplay = function (req, res, next) {
 	}
 	models.Quiz.count({where: {id : {$notIn: req.session.p52.pyp}}})
 	.then(function (c){
+		if(max < c)
+			max = c;
 		var aleatoria = -1;
 		while(req.session.p52.pyp.indexOf(aleatoria) >= 0 && c > 0){
-			aleatoria = Math.floor(Math.random()*(4-0) + 1);
+			aleatoria = Math.floor(Math.random()*(max-0) + 1);
 			console.log(aleatoria);
 		}
 //		return models.Quiz.findAll({limit : 1, offset : aleatoria});
