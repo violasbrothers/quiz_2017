@@ -12,7 +12,7 @@
 	<%console.log(tipAuthorId);%>
 	<% var isTipAuthor = session.user && (tipAuthorId && (tipAuthorId === session.user.id)); %>
 	<%console.log(isTipAuthor);%>
-        <% if (accepted || isAdmin || isQuizAuthor) { %>
+        <% if (accepted || isAdmin || isQuizAuthor || isTipAuthor) { %>
 
             <li>
                 <%= tip.text %>
