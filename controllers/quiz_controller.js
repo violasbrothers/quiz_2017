@@ -286,6 +286,7 @@ exports.randomcheck = function (req, res, next) {
 			puntos = 1;
 		}else{
 			puntos = 0;
+			if(req.session.p52)
 			req.session.p52.pyp.length = 1;
 		}
 	}
