@@ -277,13 +277,17 @@ exports.randomcheck = function (req, res, next) {
 	var answer = req.query.answer || '';
 	var result = answer.toLowerCase().trim() === req.quiz.answer.toLowerCase().trim();
 	var puntos;
-	if(result){
+	if(req.session.p52 && result){
 		req.session.p52.pyp.push(req.quiz.id);
 		console.log(req.session.p52.pyp)
 		puntos = req.session.p52.pyp.length-1;
 	}else{
-		puntos = 0;
-		req.session.p52.pyp.length = 1;
+		if(result){
+			puntos = 1;
+		}else{
+			puntos = 0;
+			req.session.p52.pyp.length = 1;
+		}
 	}
 	res.render('quizzes/random_result', {
         score: puntos,
